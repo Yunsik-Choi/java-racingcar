@@ -44,6 +44,7 @@ public class RacingGameCarList {
         return winners(winnerLocation());
     }
 
+    //TODO 리팩토링 필요
     private RacingGameCarList winners(Location winnerLocation) {
         List<RacingGameCar> result = new ArrayList<>();
         for (RacingGameCar car : cars()) {
@@ -59,10 +60,10 @@ public class RacingGameCarList {
     }
 
     private Location winnerLocation() {
-        int max = Integer.MIN_VALUE;
+        Location result = new Location(Location.LOCATION_MINIMUM);
         for (RacingGameCar car : cars()) {
-            max = Math.max(car.location().getLocation(), max);
+            result = car.location.bigger(result);
         }
-        return new Location(max);
+        return result;
     }
 }

@@ -43,4 +43,8 @@ public class Location {
     public void forward(int number) {
         this.location += number;
     }
+
+    public Location bigger(Location location) {
+        return new Location(Math.max(this.location, location.getLocation()));
+    }
 }
