@@ -2,7 +2,7 @@ package game;
 
 import game.domain.car.RacingGameCarList;
 import game.domain.game.RacingGame;
-import game.domain.rule.RacingGameRule;
+import game.domain.rule.NumberRacingGameRule;
 import game.view.output.RacingGameOutput;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public class RacingGameController {
 
     public RacingGameController(int forwardNumber, int bound, List<String> carNames, int round) {
         this.racingGame = new RacingGame(
-                new RacingGameRule(forwardNumber, bound),
+                new NumberRacingGameRule(forwardNumber, bound),
                 RacingGameCarList.makeRacingGameCars(carNames),
                 round);
     }

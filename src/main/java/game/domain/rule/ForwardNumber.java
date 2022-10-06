@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class ForwardNumber {
 
-    private static int FORWARD_MINIMUM = 0;
+    public static int FORWARD_MINIMUM = 0;
     private int forwardNumber;
 
     public ForwardNumber(int forwardNumber) {

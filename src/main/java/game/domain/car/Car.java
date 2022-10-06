@@ -7,9 +7,6 @@ public abstract class Car {
     protected Location location;
     private CarName carName;
 
-    public Car() {
-    }
-
     public Car(String name) {
         this.carName = new CarName(name);
         this.location = new Location();
@@ -23,6 +20,6 @@ public abstract class Car {
         return new CarName(carName);
     }
 
-    public abstract void forward(RacingGameRule racingGameRule, int number);
+    public abstract void forward(RacingGameRule racingGameRule);
 
 }

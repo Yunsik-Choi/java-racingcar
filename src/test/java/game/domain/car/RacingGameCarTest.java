@@ -1,6 +1,6 @@
 package game.domain.car;
 
-import game.domain.rule.RacingGameRule;
+import game.domain.rule.NumberRacingGameRule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,14 +31,25 @@ public class RacingGameCarTest {
     @DisplayName(value = "RacingGameRule과 숫자가 주어지고 RacingGameRule의 이동 가능한 숫자보다 큰 값이 주어지면 RacingGameRule의 이동 거리만큼 이동한다.")
     @Test
     void forwardRacingGameRule() {
-        RacingGameRule racingGameRule = new RacingGameRule(4, 10);
 
         Location expected = new Location(car.location().getLocation());
-        car.forward(racingGameRule, 3);
+        NumberRacingGameRule racingGameRule = new NumberRacingGameRule(4, 10) {
+            @Override
+            public int pickRandomNumber() {
+                return 3;
+            }
+        };
+        car.forward(racingGameRule);
         assertThat(car.location()).isEqualTo(new Location(expected));
 
+        racingGameRule = new NumberRacingGameRule(4, 10) {
+            @Override
+            public int pickRandomNumber() {
+                return 4;
+            }
+        };
         expected = new Location(car.location().getLocation() + racingGameRule.forwardDistance());
-        car.forward(racingGameRule, 4);
+        car.forward(racingGameRule);
         assertThat(car.location()).isEqualTo(expected);
     }
 
