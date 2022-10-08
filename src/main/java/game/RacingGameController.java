@@ -25,6 +25,6 @@ public class RacingGameController {
             RacingGameOutput.printCarsStatus(racingGame.carList());
             RacingGameOutput.finishRound();
         }
-        RacingGameOutput.endGame(racingGame.carList());
+        RacingGameOutput.endGame(racingGame.carList().winners());
     }
 }

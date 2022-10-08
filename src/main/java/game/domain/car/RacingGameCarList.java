@@ -3,6 +3,7 @@ package game.domain.car;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGameCarList {
 
@@ -44,19 +45,11 @@ public class RacingGameCarList {
         return winners(winnerLocation());
     }
 
-    //TODO 리팩토링 필요
     private RacingGameCarList winners(Location winnerLocation) {
-        List<RacingGameCar> result = new ArrayList<>();
-        for (RacingGameCar car : cars()) {
-            isWinner(winnerLocation, result, car);
-        }
+        List<RacingGameCar> result = cars.stream()
+                .filter(racingGameCar -> racingGameCar.location().equals(winnerLocation))
+                .collect(Collectors.toList());
         return new RacingGameCarList(result);
-    }
-
-    private static void isWinner(Location winnerLocation, List<RacingGameCar> result, RacingGameCar car) {
-        if (car.location().equals(winnerLocation)) {
-            result.add(car);
-        }
     }
 
     private Location winnerLocation() {
