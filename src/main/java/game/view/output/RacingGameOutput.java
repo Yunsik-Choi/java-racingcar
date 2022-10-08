@@ -39,7 +39,7 @@ public class RacingGameOutput {
         for (int i = 0; i < racingGameCarList.cars().size() - 1; i++) {
             result.append(racingGameCarList.cars().get(i).carName()).append(WINNER_SEPARATOR);
         }
-        result.append(racingGameCarList.getLast().carName());
+        result.append(racingGameCarList.getLast().carName().getCarName());
         result.append(WINNER_GUIDE);
         System.out.println(result);
     }
